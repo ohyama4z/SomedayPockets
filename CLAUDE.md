@@ -64,6 +64,8 @@
 - 作業単位ごとに逐一コミットする（ロールバック可能にするため）
 - ユーザーの確認なしで自動的にコミットしてよい
 - `git add` と `git commit` は必ず別々のBash呼び出しで実行する（`&&` で繋げない）
+- コミットメッセージは `/tmp/commit-msg.txt` に書いてから `git commit -F /tmp/commit-msg.txt` で渡す
+- Issueコメント・PR本文は `/tmp/gh-body.md` に書いてから `--body-file /tmp/gh-body.md` で渡す
 
 ## 行動原則
 ### やってほしいこと
