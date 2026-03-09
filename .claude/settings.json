@@ -1,11 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Read(/home/oy4z/dev/MyQuest/**)",
-      "Edit(/home/oy4z/dev/MyQuest/docs/**)",
-      "Edit(/home/oy4z/dev/MyQuest/app/**)",
-      "Edit(/home/oy4z/dev/MyQuest/.gitignore)",
-      "Write(/home/oy4z/dev/MyQuest/**)",
+      "Read(**)",
+      "Edit(/docs/**)",
+      "Edit(/app/**)",
+      "Edit(/.gitignore)",
+      "Write(/tmp/*)",
+      "Write(/docs/**)",
+      "Write(/app/**)",
       "Glob",
       "Grep",
       "Bash(git status *)",
@@ -28,9 +30,7 @@
       "Bash(* --version)",
       "Bash(* --help)",
       "Bash(gh issue *)",
-      "Bash(gh label *)",
-      "Write(/home/oy4z/dev/MyQuest/tmp/*)",
-      "Read(/home/oy4z/dev/MyQuest/tmp/*)"
+      "Bash(gh label *)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
@@ -41,8 +41,8 @@
       "Bash(git clean -f *)",
       "Bash(sudo *)",
       "Bash(chmod 777 *)",
-      "Read(./.env)",
-      "Read(./.env.*)",
+      "Read(.env)",
+      "Read(.env.*)",
       "Read(**/*secret*)",
       "Read(**/*credential*)"
     ]

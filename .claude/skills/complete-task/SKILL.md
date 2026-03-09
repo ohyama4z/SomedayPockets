@@ -1,47 +1,42 @@
 ---
 name: complete-task
-description: 現在の作業ブランチからPRを作成してタスクを完了する
+description: 現在の作業ブランチのドラフトPRをReadyにしてmainにマージし、タスクを完了する
 disable-model-invocation: true
-allowed-tools: Bash(git *), Bash(gh *)
+allowed-tools: Bash(git *), Bash(gh *), Write, Read
 ---
 
 # タスク完了フロー
 
-現在の作業ブランチの変更をPRにしてmainにマージする。
+現在の作業ブランチのドラフトPRをReadyにしてmainにマージする。
 
 ## 1. 現在の状態を確認
 ```bash
 git status
 git log --oneline main..HEAD
 ```
-未コミットの変更があればコミットする。
+未コミットの変更があればコミットする。未pushのコミットがあればpushする。
 
-## 2. リモートにpush
-```bash
-git push -u origin HEAD
-```
-
-## 3. ブランチ名からIssue番号を特定
+## 2. ブランチ名からIssue番号を特定
 ブランチ名が `issue/番号-xxx` の形式なので、番号を抽出する。
 
-## 4. PRを作成
-変更内容を分析し、PRのタイトルと本文を作成する。本文に `Closes #番号` を含める：
+## 3. ドラフトPRをReadyに変更
 ```bash
-gh pr create --base main --title "<タイトル>" --body "<本文（Closes #番号 を含む）>"
+gh pr ready --repo ohyama4z/MyQuest
 ```
 
-## 5. PRをマージ
+## 4. PRをマージ
 ```bash
-gh pr merge --merge
+gh pr merge --merge --repo ohyama4z/MyQuest
 ```
+マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 6. mainに戻ってブランチを削除
+## 5. mainに戻ってブランチを削除
 ```bash
 git checkout main
 git pull
 git branch -d <ブランチ名>
 ```
 
-## 7. ユーザーに報告
+## 6. ユーザーに報告
 - マージされたPRのURL
 - クローズされたIssue番号
