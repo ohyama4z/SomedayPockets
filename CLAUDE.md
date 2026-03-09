@@ -18,11 +18,11 @@
 - Claude Codeのメモリ (`~/.claude/projects/.../memory/`) にはプロジェクト横断の学びや安定したパターンを記録する
 
 ## タスク運用
-- `docs/tasks.md` でタスクの状態を管理する（進行中・未着手・完了）
-- セッション開始時にまず `docs/tasks.md` を読み、現在の状態を把握する
-- 新しい作業が発生したらタスクとして追加する
-- 作業完了時はタスクを「完了」に移動し、コミットに含める
-- タスクIDは `T-XXX` の連番で管理する
+- GitHub Issues（ohyama4z/MyQuest）でタスクを管理する
+- セッション開始時にまず `gh issue list` でオープンなIssueを確認し、現在の状態を把握する
+- 新しい作業が発生したら `gh issue create` でIssueを作成する
+- 作業完了時は `gh issue close` でクローズする
+- gh CLIを使用する（GitHub MCPは使わない）
 
 ## 改善提案
 - 運用・開発プロセス・Claude Codeの活用方法について、気づいた改善点はその都度積極的に提案する
