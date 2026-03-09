@@ -21,12 +21,12 @@ git log --oneline main..HEAD
 
 ## 3. ドラフトPRをReadyに変更
 ```bash
-gh pr ready --repo ohyama4z/MyQuest
+gh pr ready --repo ohyama4z/SomedayPockets
 ```
 
 ## 4. PRをマージ
 ```bash
-gh pr merge --merge --repo ohyama4z/MyQuest
+gh pr merge --merge --repo ohyama4z/SomedayPockets
 ```
 マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 

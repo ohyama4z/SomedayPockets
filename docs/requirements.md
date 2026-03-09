@@ -1,4 +1,4 @@
-# MyQuest 要件定義
+# SomedayPockets 要件定義
 
 > ステータス: ドラフト（議論中）
 

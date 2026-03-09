@@ -38,7 +38,7 @@ $ARGUMENTS の内容からIssueを作成する。
 
 ## 3. Issueを投稿
 ```bash
-gh issue create --repo ohyama4z/MyQuest --title "<タイトル>" --body-file tmp/gh-body.md
+gh issue create --repo ohyama4z/SomedayPockets --title "<タイトル>" --body-file tmp/gh-body.md
 ```
 
 ## 4. ユーザーに報告
