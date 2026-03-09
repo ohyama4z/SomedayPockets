@@ -16,11 +16,10 @@
 - 要件や設計の決定事項は `docs/` 配下に残す
 - 未決事項は `docs/open-questions.md` で管理し、解決したら `requirements.md` に反映する
 - Claude Codeのメモリ (`~/.claude/projects/.../memory/`) にはプロジェクト横断の学びや安定したパターンを記録する
-- CLAUDE.md・docs/ には確定事項（「何をするか」）のみ残す。不採用の判断（「〇〇はしない」）は載せない（判断経緯はIssueコメントに残す）
+- ドキュメントには確定事項（「何をするか」）のみ残す。不採用の判断（「〇〇はしない」）は載せない（判断経緯はIssueコメントに残す）
 
 ## タスク運用
 - GitHub Issues（ohyama4z/MyQuest）でタスクを管理する
-- gh CLIを使用する（GitHub MCPは使わない）
 
 ### セッション開始時
 - `gh issue list` でオープンなIssueを確認し、現在の状態を把握する
@@ -38,7 +37,6 @@
 
 ### エピック
 - 大きな単位（機能群、ジャンル）は `epic:〇〇` ラベルで表現する（例: `epic:要件定義`、`epic:運用改善`）
-- エピック用のIssueは作らない。ラベルでIssueをグルーピングするだけ
 
 ### 記録の使い分け
 - **コミット**: コードやドキュメントの変更履歴（何をしたか）
@@ -65,8 +63,8 @@
 - 作業単位ごとに逐一コミットする（ロールバック可能にするため）
 - ユーザーの確認なしで自動的にコミットしてよい
 - `git add` と `git commit` は必ず別々のBash呼び出しで実行する（`&&` で繋げない）
-- コミットメッセージは `/tmp/commit-msg.txt` に書いてから `git commit -F /tmp/commit-msg.txt` で渡す
-- Issueコメント・PR本文は `/tmp/gh-body.md` に書いてから `--body-file /tmp/gh-body.md` で渡す
+- コミットメッセージは `tmp/commit-msg.txt` に書いてから `git commit -F tmp/commit-msg.txt` で渡す
+- Issueコメント・PR本文は `tmp/gh-body.md` に書いてから `--body-file tmp/gh-body.md` で渡す
 
 ## 行動原則
 ### やってほしいこと

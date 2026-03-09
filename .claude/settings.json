@@ -29,8 +29,8 @@
       "Bash(* --help)",
       "Bash(gh issue *)",
       "Bash(gh label *)",
-      "Write(/tmp/*)",
-      "Read(/tmp/*)"
+      "Write(/home/oy4z/dev/MyQuest/tmp/*)",
+      "Read(/home/oy4z/dev/MyQuest/tmp/*)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
