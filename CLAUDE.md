@@ -21,6 +21,7 @@
 - GitHub Issues（ohyama4z/MyQuest）でタスクを管理する
 - セッション開始時にまず `gh issue list` でオープンなIssueを確認し、現在の状態を把握する
 - 新しい作業が発生したら `gh issue create` でIssueを作成する
+- 着手時は `in-progress` ラベルを付与する
 - 作業完了時は `gh issue close` でクローズする
 - gh CLIを使用する（GitHub MCPは使わない）
 
