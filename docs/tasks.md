@@ -6,9 +6,19 @@
 ## 進行中
 
 ### T-005: CLAUDE.mdの充実
-- 状態: 進行中
+- 状態: 進行中（GitHub Issues移行後に継続）
 - 目的: 「やってほしいこと」「やってほしくないこと」を明文化し、セッション間の一貫性を確保
 - 備考: タスク運用ルール自体もCLAUDE.mdに反映する
+
+### T-010: GitHub Issues移行
+- 状態: 進行中
+- 目的: tasks.mdからGitHub Issuesへタスク管理を移行
+- 手順:
+  1. GitHubにリモートリポジトリ作成
+  2. 既存コードをpush
+  3. 未着手タスクをGitHub Issuesに移行
+  4. CLAUDE.mdのタスク運用ルールを更新
+  5. tasks.md廃止
 
 ## 未着手
 
