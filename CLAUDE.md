@@ -16,6 +16,7 @@
 - 要件や設計の決定事項は `docs/` 配下に残す
 - 未決事項は `docs/open-questions.md` で管理し、解決したら `requirements.md` に反映する
 - Claude Codeのメモリ (`~/.claude/projects/.../memory/`) にはプロジェクト横断の学びや安定したパターンを記録する
+- CLAUDE.md・docs/ には確定事項（「何をするか」）のみ残す。不採用の判断（「〇〇はしない」）は載せない（判断経緯はIssueコメントに残す）
 
 ## タスク運用
 - GitHub Issues（ohyama4z/MyQuest）でタスクを管理する
