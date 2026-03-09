@@ -11,16 +11,16 @@ allowed-tools: Read, Bash(git *), Bash(gh *)
 
 ## 1. オープンなIssueを確認
 ```bash
-gh issue list --repo ohyama4z/MyQuest --state open
+gh issue list --repo ohyama4z/SomedayPockets --state open
 ```
 
 ## 2. 進行中タスクを確認
 ```bash
-gh issue list --repo ohyama4z/MyQuest --label "in-progress"
+gh issue list --repo ohyama4z/SomedayPockets --label "in-progress"
 ```
 in-progressのIssueがあれば、そのコメントを読んで途中経過を把握する：
 ```bash
-gh issue view <番号> --repo ohyama4z/MyQuest --comments
+gh issue view <番号> --repo ohyama4z/SomedayPockets --comments
 ```
 
 ## 3. Gitの状態を確認

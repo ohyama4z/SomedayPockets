@@ -1,5 +1,5 @@
 
-# MyQuest - Claude Code プロジェクト設定
+# SomedayPockets - Claude Code プロジェクト設定
 
 ## プロジェクト概要
 「やりたいことリスト」管理Webアプリケーション。個人開発。
@@ -20,7 +20,7 @@
 - ドキュメントには確定事項（「何をするか」）のみ残す。不採用の判断（「〇〇はしない」）は載せない（判断経緯はIssueコメントに残す）
 
 ## タスク運用
-- GitHub Issues（ohyama4z/MyQuest）でタスクを管理する
+- GitHub Issues（ohyama4z/SomedayPockets）でタスクを管理する
 - 作業は必ずIssue起点で行う（Issue作成は `/create-issue` スキルで実行する）
 - セッション開始時は `gh issue list` でオープンなIssueを確認し、`in-progress` があればコメントから途中経過を把握する
 - タスクの着手・完了は `/start-task`・`/complete-task` スキルで実行する

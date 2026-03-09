@@ -12,7 +12,7 @@ Issue #$ARGUMENTS に着手する。以下を順に実行：
 
 ## 1. Issue内容を確認
 ```bash
-gh issue view $ARGUMENTS --repo ohyama4z/MyQuest
+gh issue view $ARGUMENTS --repo ohyama4z/SomedayPockets
 ```
 
 ## 2. mainブランチを最新にする
@@ -29,7 +29,7 @@ git checkout -b issue/$ARGUMENTS-<簡潔な名前>
 
 ## 4. in-progressラベルを付与
 ```bash
-gh issue edit $ARGUMENTS --repo ohyama4z/MyQuest --add-label "in-progress"
+gh issue edit $ARGUMENTS --repo ohyama4z/SomedayPockets --add-label "in-progress"
 ```
 
 ## 5. 作業計画を立て、Issueにコメント
@@ -39,7 +39,7 @@ Issue内容を踏まえて作業計画を立てる。サブタスクはチェッ
 
 コメントは `tmp/gh-body.md` に書いてから投稿する：
 ```bash
-gh issue comment $ARGUMENTS --repo ohyama4z/MyQuest --body-file tmp/gh-body.md
+gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
 ```
 
 ## 6. 初回pushしてドラフトPRを作成
@@ -50,7 +50,7 @@ git push -u origin HEAD
 ```
 PR本文は `tmp/gh-body.md` に書いてから作成する：
 ```bash
-gh pr create --repo ohyama4z/MyQuest --draft --title "<タイトル>" --body-file tmp/gh-body.md
+gh pr create --repo ohyama4z/SomedayPockets --draft --title "<タイトル>" --body-file tmp/gh-body.md
 ```
 
 ## 7. ユーザーに報告
