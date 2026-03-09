@@ -14,7 +14,7 @@ allowed-tools: Bash(git *), Bash(gh *), Write, Read
 git status
 git log --oneline main..HEAD
 ```
-未コミットの変更があればコミットする。未pushのコミットがあればpushする。
+未コミットの変更があれば `/save-progress` スキルの手順でコミット・pushする。
 
 ## 2. ブランチ名からIssue番号を特定
 ブランチ名が `issue/番号-xxx` の形式なので、番号を抽出する。
