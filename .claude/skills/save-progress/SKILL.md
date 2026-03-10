@@ -2,7 +2,7 @@
 name: save-progress
 description: 変更をadd→commit→pushする。コミットメッセージ規則・一時ファイル経由の運用ルールを含む
 disable-model-invocation: true
-allowed-tools: Bash(git *), Write, Read
+allowed-tools: Bash(git *), Bash(gh *), Write, Read
 ---
 
 # 変更の保存（add → commit → push）
@@ -42,6 +42,13 @@ git commit -F tmp/commit-msg.txt
 ```bash
 git push
 ```
+
+### 5. Issueチェックリストの更新（区切りのタイミングで）
+サブタスクが完了した区切りのよいタイミングで、Issueコメントのチェックリストを更新する。毎コミットでは不要。
+```bash
+gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
+```
+既存コメントの編集ができない場合は、進捗を新しいコメントとして追記する。
 
 ## 運用ルール
 - 作業単位ごとに逐一コミットする（ロールバック可能にするため）
