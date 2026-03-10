@@ -32,7 +32,14 @@ git checkout -b issue/$ARGUMENTS-<簡潔な名前>
 gh issue edit $ARGUMENTS --repo ohyama4z/SomedayPockets --add-label "in-progress"
 ```
 
-## 5. 作業計画を立て、Issueにコメント
+## 5. 知見を読み込む
+`knowledge/` 配下のファイル一覧を確認し、今回のタスクに参考になりそうな知見があれば読み込む。
+```bash
+ls knowledge/
+```
+関連しそうなファイルがあれば内容を読み、作業計画に活かす。
+
+## 6. 作業計画を立て、Issueにコメント
 Issue内容を踏まえて作業計画を立てる。サブタスクはチェックリスト（`- [ ]`）で分解する。
 - 粒度が大きいサブタスクは子Issueに切り出し、`- [ ] #番号` でリンクする
 - 小さいサブタスクはチェックリストのままで管理する
@@ -42,7 +49,7 @@ Issue内容を踏まえて作業計画を立てる。サブタスクはチェッ
 gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
 ```
 
-## 6. 初回pushしてドラフトPRを作成
+## 7. 初回pushしてドラフトPRを作成
 空コミットを作成し、pushしてからドラフトPRを作成する。PR本文に `Closes #番号` を含める：
 ```bash
 git commit --allow-empty -m "chore: Issue #$ARGUMENTS の作業開始"
@@ -53,7 +60,7 @@ PR本文は `tmp/gh-body.md` に書いてから作成する：
 gh pr create --repo ohyama4z/SomedayPockets --draft --title "<タイトル>" --body-file tmp/gh-body.md
 ```
 
-## 7. ユーザーに報告
+## 8. ユーザーに報告
 - 作成したブランチ名
 - ドラフトPRのURL
 - 作業計画の概要

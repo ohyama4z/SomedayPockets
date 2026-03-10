@@ -19,24 +19,28 @@ git log --oneline main..HEAD
 ## 2. ブランチ名からIssue番号を特定
 ブランチ名が `issue/番号-xxx` の形式なので、番号を抽出する。
 
-## 3. ドラフトPRをReadyに変更
+## 3. 知見の記録
+今回のタスクで得られた知見（技術的な学び、判断基準、ハマりポイントなど）がないかユーザーに確認する。
+知見がある場合は `/save-knowledge` スキルの手順で記録し、コミット・pushする。
+
+## 4. ドラフトPRをReadyに変更
 ```bash
 gh pr ready --repo ohyama4z/SomedayPockets
 ```
 
-## 4. PRをマージ
+## 5. PRをマージ
 ```bash
 gh pr merge --merge --repo ohyama4z/SomedayPockets
 ```
 マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 5. mainに戻ってブランチを削除
+## 6. mainに戻ってブランチを削除
 ```bash
 git checkout main
 git pull
 git branch -d <ブランチ名>
 ```
 
-## 6. ユーザーに報告
+## 7. ユーザーに報告
 - マージされたPRのURL
 - クローズされたIssue番号
