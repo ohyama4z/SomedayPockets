@@ -41,4 +41,10 @@
 - CLAUDE.md・.claude/ 配下を無断で変更しない（必ず確認を取る）
 
 ## 開発ルール
-- （技術スタック決定後に追記）
+- **言語**: TypeScript（strict mode）
+- **フレームワーク**: Next.js (App Router) + React
+- **スタイリング**: Tailwind CSS + shadcn/ui
+- **DB**: Cloudflare D1 + Drizzle ORM
+- **デプロイ**: Cloudflare Pages (@opennextjs/cloudflare)
+- **認証**: Cloudflare Access
+- 詳細は `docs/spec/tech-stack.md` を参照
