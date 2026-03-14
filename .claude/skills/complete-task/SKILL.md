@@ -1,6 +1,20 @@
 ---
 name: complete-task
 description: 現在の作業ブランチのドラフトPRをReadyにしてmainにマージし、タスクを完了する
+allowed-tools:
+  - Bash(git status)
+  - Bash(git log *)
+  - Bash(git checkout *)
+  - Bash(git pull)
+  - Bash(git branch *)
+  - Bash(git push)
+  - Bash(git push *)
+  - Bash(gh pr ready *)
+  - Bash(gh pr merge --merge *)
+  - Bash(gh issue edit *)
+  - Read
+  - Write
+  - Glob
 ---
 
 # タスク完了フロー

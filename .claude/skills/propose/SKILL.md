@@ -2,6 +2,10 @@
 name: propose
 description: 運用・プロセス改善の改善点に気づいたとき、提案をIssueとして起票する。AIが自律的に呼ぶ。内部でcreate-issueを呼ぶラッパー
 argument-hint: "<提案タイトル> [提案の背景と内容]"
+allowed-tools:
+  - Bash(gh issue create *)
+  - Read
+  - Write
 ---
 
 # 運用改善提案の起票
@@ -10,8 +14,6 @@ argument-hint: "<提案タイトル> [提案の背景と内容]"
 
 ## 1. 引数を解析
 引数からタイトルと、あれば背景・内容を読み取る。
-
-
 
 ## 2. `/create-issue` を呼ぶ
 

@@ -1,6 +1,17 @@
 ---
 name: save-progress
 description: 変更をadd→commit→pushする。コミットメッセージ規則・一時ファイル経由の運用ルールを含む
+allowed-tools:
+  - Bash(git status)
+  - Bash(git diff *)
+  - Bash(git diff)
+  - Bash(git add *)
+  - Bash(git commit *)
+  - Bash(git push)
+  - Bash(git push *)
+  - Bash(gh issue comment *)
+  - Read
+  - Write
 ---
 
 # 変更の保存（add → commit → push）

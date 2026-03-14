@@ -2,6 +2,10 @@
 name: create-issue
 description: Issueを作成する。タイトルと概要を指定すると、テンプレートに沿った本文を生成して投稿する
 argument-hint: "<タイトル> [概要や背景の説明]"
+allowed-tools:
+  - Bash(gh issue create *)
+  - Read
+  - Write
 ---
 
 # Issue作成

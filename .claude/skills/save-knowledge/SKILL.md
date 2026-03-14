@@ -1,6 +1,13 @@
 ---
 name: save-knowledge
 description: 開発知見をknowledge/に記録する
+allowed-tools:
+  - Bash(ls *)
+  - Bash(git add *)
+  - Bash(git commit *)
+  - Read
+  - Write
+  - Glob
 ---
 
 # 知見の記録

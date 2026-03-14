@@ -1,6 +1,14 @@
 ---
 name: session-status
 description: セッション開始時にタスク状態・ブランチ状態・直近の作業内容を確認する
+allowed-tools:
+  - Bash(gh issue list *)
+  - Bash(gh issue view *)
+  - Bash(ls *)
+  - Bash(git status)
+  - Bash(git log *)
+  - Read
+  - Glob
 ---
 
 # セッション開始チェック

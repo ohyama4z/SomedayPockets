@@ -2,6 +2,20 @@
 name: start-task
 description: Issue番号を指定してタスクに着手する。ブランチ作成・ドラフトPR・ラベル付与・作業計画コメントを一括実行
 argument-hint: "[issue番号]"
+allowed-tools:
+  - Bash(gh issue view *)
+  - Bash(gh issue edit *)
+  - Bash(gh issue comment *)
+  - Bash(gh pr create *)
+  - Bash(git checkout *)
+  - Bash(git pull)
+  - Bash(git commit *)
+  - Bash(git push)
+  - Bash(git push *)
+  - Bash(ls *)
+  - Read
+  - Write
+  - Glob
 ---
 
 # タスク着手セットアップ

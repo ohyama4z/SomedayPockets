@@ -1,6 +1,11 @@
 ---
 name: review-process
 description: 第三者視点でプロセス・運用を振り返り、改善提案があれば/proposeで起票する。turn-counterから自動で呼ばれる
+allowed-tools:
+  - Agent
+  - Bash(gh issue create *)
+  - Read
+  - Write
 ---
 
 # プロセスレビュー
