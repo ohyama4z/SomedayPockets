@@ -31,6 +31,9 @@
       "Bash(* --help)",
       "Bash(gh issue *)",
       "Bash(gh label *)",
+      "Bash(gh pr *)",
+      "Bash(git push)",
+      "Bash(git push *)",
       "Bash(bash .claude/scripts/turn-counter.sh)"
     ],
     "deny": [

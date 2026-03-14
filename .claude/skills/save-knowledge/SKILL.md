@@ -1,7 +1,6 @@
 ---
 name: save-knowledge
 description: 開発知見をknowledge/に記録する
-allowed-tools: Bash(git *), Read, Write, Edit
 ---
 
 # 知見の記録

@@ -1,7 +1,6 @@
 ---
 name: complete-task
 description: 現在の作業ブランチのドラフトPRをReadyにしてmainにマージし、タスクを完了する
-allowed-tools: Bash(git *), Bash(gh *), Write, Read
 ---
 
 # タスク完了フロー

@@ -1,7 +1,6 @@
 ---
 name: propose
 description: 運用・プロセス改善の提案をIssueとして起票する。AIが気づいた改善点を提案するときに自律的に呼ぶ
-allowed-tools: Bash(gh *), Write, Read
 argument-hint: "<提案タイトル> [提案の背景と内容]"
 ---
 
