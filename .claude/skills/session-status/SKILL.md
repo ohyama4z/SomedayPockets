@@ -1,7 +1,6 @@
 ---
 name: session-status
 description: セッション開始時にタスク状態・ブランチ状態・直近の作業内容を確認する
-disable-model-invocation: true
 allowed-tools: Read, Bash(git *), Bash(gh *)
 ---
 

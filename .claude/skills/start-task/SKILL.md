@@ -1,7 +1,6 @@
 ---
 name: start-task
 description: Issue番号を指定してタスクに着手する。ブランチ作成・ドラフトPR・ラベル付与・作業計画コメントを一括実行
-disable-model-invocation: true
 allowed-tools: Bash(git *), Bash(gh *), Read, Write, Edit
 argument-hint: "[issue番号]"
 ---

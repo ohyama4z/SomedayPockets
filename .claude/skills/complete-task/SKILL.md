@@ -1,7 +1,6 @@
 ---
 name: complete-task
 description: 現在の作業ブランチのドラフトPRをReadyにしてmainにマージし、タスクを完了する
-disable-model-invocation: true
 allowed-tools: Bash(git *), Bash(gh *), Write, Read
 ---
 

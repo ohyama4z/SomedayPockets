@@ -1,7 +1,6 @@
 ---
 name: create-issue
 description: Issueを作成する。タイトルと概要を指定すると、テンプレートに沿った本文を生成して投稿する
-disable-model-invocation: true
 allowed-tools: Bash(gh *), Write, Read
 argument-hint: "<タイトル> [概要や背景の説明]"
 ---
