@@ -4,24 +4,16 @@
       "Read(**)",
       "Edit(/docs/**)",
       "Edit(/app/**)",
+      "Edit(/knowledge/**)",
+      "Edit(tmp/*)",
       "Edit(/.gitignore)",
       "Write(/tmp/*)",
+      "Write(tmp/*)",
       "Write(/docs/**)",
       "Write(/app/**)",
+      "Write(/knowledge/**)",
       "Glob",
       "Grep",
-      "Bash(git status *)",
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git diff)",
-      "Bash(git log *)",
-      "Bash(git log)",
-      "Bash(git branch *)",
-      "Bash(git branch)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git checkout *)",
-      "Bash(git switch *)",
       "Bash(ls *)",
       "Bash(ls)",
       "Bash(pwd)",
@@ -29,9 +21,19 @@
       "Bash(mkdir *)",
       "Bash(* --version)",
       "Bash(* --help)",
-      "Bash(gh issue *)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue create *)",
+      "Bash(gh issue comment *)",
+      "Bash(gh issue edit *)",
       "Bash(gh label *)",
-      "Bash(gh pr *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr ready *)",
+      "Bash(gh pr merge --merge *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
       "Bash(git push)",
       "Bash(git push *)",
       "Bash(bash .claude/scripts/turn-counter.sh)"
@@ -48,7 +50,9 @@
       "Read(.env)",
       "Read(.env.*)",
       "Read(**/*secret*)",
-      "Read(**/*credential*)"
+      "Read(**/*credential*)",
+      "Bash(gh issue delete *)",
+      "Bash(gh pr close *)"
     ]
   },
   "env": {
@@ -60,7 +64,7 @@
       {
         "hooks": [
           {
-            "type": "prompt",
+            "type": "command",
             "command": "bash .claude/scripts/turn-counter.sh"
           }
         ]

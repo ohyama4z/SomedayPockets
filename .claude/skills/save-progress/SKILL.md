@@ -21,6 +21,7 @@ description: 変更をadd→commit→pushする。コミットメッセージ規
 例: `feat: タスク一覧画面の実装 (#15)`
 
 ## 手順
+`&&`を使って複数のコマンドを繋げるのは禁止。必ずコマンドごとにBash呼び出しを分けること。
 
 ### 1. コミットメッセージを作成
 `tmp/commit-msg.txt` にコミットメッセージを書く。
@@ -29,7 +30,6 @@ description: 変更をadd→commit→pushする。コミットメッセージ規
 ```bash
 git add <対象ファイル>
 ```
-`git add` と `git commit` は必ず別々のBash呼び出しで実行する（`&&` で繋げない）。
 
 ### 3. コミット
 ```bash
