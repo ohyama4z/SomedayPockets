@@ -55,4 +55,4 @@
 - **DB**: Cloudflare D1 + Drizzle ORM
 - **デプロイ**: Cloudflare Pages (@opennextjs/cloudflare)
 - **認証**: Cloudflare Access
-- 詳細は `docs/spec/tech-stack.md` を参照
+- 詳細は `docs/spec/技術スタック.md` を参照
