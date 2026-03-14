@@ -5,6 +5,7 @@
       "Edit(/docs/**)",
       "Edit(/app/**)",
       "Edit(/knowledge/**)",
+      "Edit(tmp/*)",
       "Edit(/.gitignore)",
       "Write(/tmp/*)",
       "Write(tmp/*)",
@@ -13,20 +14,7 @@
       "Write(/knowledge/**)",
       "Glob",
       "Grep",
-      "Bash(git status *)",
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git diff)",
-      "Bash(git log *)",
-      "Bash(git log)",
-      "Bash(git branch *)",
-      "Bash(git branch)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git checkout *)",
-      "Bash(git switch *)",
-      "Bash(git pull)",
-      "Bash(git pull *)",
+      "Bash(git *)",
       "Bash(ls *)",
       "Bash(ls)",
       "Bash(pwd)",
@@ -45,6 +33,8 @@
       "Bash(gh pr create *)",
       "Bash(gh pr ready *)",
       "Bash(gh pr merge --merge *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
       "Bash(git push)",
       "Bash(git push *)",
       "Bash(bash .claude/scripts/turn-counter.sh)"
@@ -75,7 +65,7 @@
       {
         "hooks": [
           {
-            "type": "prompt",
+            "type": "command",
             "command": "bash .claude/scripts/turn-counter.sh"
           }
         ]
