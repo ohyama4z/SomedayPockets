@@ -19,3 +19,4 @@ build/
 
 # Temp files for Claude Code
 /tmp/
+/.claude/tmp/

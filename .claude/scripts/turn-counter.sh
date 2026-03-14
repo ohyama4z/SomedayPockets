@@ -1,7 +1,8 @@
 #!/bin/bash
 # やり取りのカウンターを管理し、N回に1回プロセスレビューを促す
 
-COUNTER_FILE="/tmp/somepockets-turn-counter"
+COUNTER_FILE="$(dirname "$0")/../tmp/turn-counter"
+mkdir -p "$(dirname "$COUNTER_FILE")"
 N=10
 
 count=$(cat "$COUNTER_FILE" 2>/dev/null || echo 0)
