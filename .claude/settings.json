@@ -14,7 +14,6 @@
       "Write(/knowledge/**)",
       "Glob",
       "Grep",
-      "Bash(git *)",
       "Bash(ls *)",
       "Bash(ls)",
       "Bash(pwd)",
