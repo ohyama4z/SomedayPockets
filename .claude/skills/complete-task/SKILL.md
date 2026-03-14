@@ -12,6 +12,8 @@ allowed-tools:
   - Bash(gh pr ready *)
   - Bash(gh pr merge --merge *)
   - Bash(gh issue edit *)
+  - Bash(gh issue view *)
+  - Bash(gh issue comment *)
   - Read
   - Write
   - Glob
@@ -31,39 +33,56 @@ git log --oneline main..HEAD
 ## 2. ブランチ名からIssue番号を特定
 ブランチ名が `issue/番号-xxx` の形式なので、番号を抽出する。
 
-## 3. 知見の記録
+## 3. epicラベルの確認
+IssueにEpicラベル（`epic:〇〇` 形式）が付いているか確認する。
+```bash
+gh issue view <番号> --repo ohyama4z/SomedayPockets
+```
+Epicの場合はステップ5で完了サマリーを作成する（通常タスクはスキップ）。
+
+## 4. 知見の記録
 今回のタスクで得られた知見（技術的な学び、判断基準、ハマりポイントなど）があれば、ユーザーへの確認なしに `/save-knowledge` スキルの手順で記録し、コミット・pushする。なければスキップ。
 
-## 4. notes/への記録
-今回のタスクで発生した判断経緯・ハマりポイント・調査結果などがあれば、`notes/日付_T番号_タイトル.md` に書き出してコミット・pushする。特筆すべきことがなければスキップ。
+## 5. notes/への記録・完了サマリー（epicの場合は必須）
+今回のタスクで発生した判断経緯・ハマりポイント・調査結果などがあれば、`notes/日付_T番号_タイトル.md` に書き出してコミット・pushする。
 
-## 5. プロセスレビュー
+**epicラベルが付いている場合は必須**: 以下の内容を含む完了サマリーをIssueコメントとして投稿する。
+- 主要な判断経緯（何を選び、なぜ選んだか）
+- 参照したADR（`docs/decisions/` のファイル名）
+- 得られた知見へのリンク（`knowledge/` のファイル名）
+- notes/へのリンク（`notes/` のファイル名）
+
+```bash
+gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
+```
+
+## 6. プロセスレビュー
 `/review-process` スキルを実行する。見つかった改善点はIssue起票のみ行い、PRマージはブロックしない。
 
-## 6. ドラフトPRをReadyに変更
+## 7. ドラフトPRをReadyに変更
 ```bash
 gh pr ready --repo ohyama4z/SomedayPockets
 ```
 
-## 7. PRをマージ
+## 8. PRをマージ
 ```bash
 gh pr merge --merge --repo ohyama4z/SomedayPockets
 ```
 マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 8. in-progressラベルを除去
+## 9. in-progressラベルを除去
 ```bash
 gh issue edit <番号> --repo ohyama4z/SomedayPockets --remove-label "in-progress"
 ```
 
-## 9. mainに戻ってブランチを削除
+## 10. mainに戻ってブランチを削除
 ```bash
 git checkout main
 git pull
 git branch -d <ブランチ名>
 ```
 
-## 10. 報告
+## 11. 報告
 - マージされたPRのURL
 - クローズされたIssue番号
 - プロセスレビューで起票した提案があればそのURL
