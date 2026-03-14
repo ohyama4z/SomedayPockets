@@ -30,7 +30,11 @@
       "Bash(* --version)",
       "Bash(* --help)",
       "Bash(gh issue *)",
-      "Bash(gh label *)"
+      "Bash(gh label *)",
+      "Bash(gh pr *)",
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(bash .claude/scripts/turn-counter.sh)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
@@ -45,6 +49,18 @@
       "Read(.env.*)",
       "Read(**/*secret*)",
       "Read(**/*credential*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "command": "bash .claude/scripts/turn-counter.sh"
+          }
+        ]
+      }
     ]
   }
 }

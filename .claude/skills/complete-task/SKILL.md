@@ -1,7 +1,6 @@
 ---
 name: complete-task
 description: 現在の作業ブランチのドラフトPRをReadyにしてmainにマージし、タスクを完了する
-allowed-tools: Bash(git *), Bash(gh *), Write, Read
 ---
 
 # タスク完了フロー
@@ -39,6 +38,10 @@ git pull
 git branch -d <ブランチ名>
 ```
 
-## 7. ユーザーに報告
+## 7. プロセスレビュー
+`/review-process` スキルを実行する。
+
+## 8. 報告
 - マージされたPRのURL
 - クローズされたIssue番号
+- プロセスレビューで起票した提案があればそのURL
