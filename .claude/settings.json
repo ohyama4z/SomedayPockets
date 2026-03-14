@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Read(**)",
@@ -44,7 +47,9 @@
       "Bash(git push *)",
       "Bash(bash .claude/scripts/turn-counter.sh)",
       "WebSearch",
-      "WebFetch"
+      "WebFetch",
+      "Skill(propose)",
+      "Skill(propose:*)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
@@ -63,10 +68,6 @@
       "Bash(gh pr close *)"
     ]
   },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "teammateMode": "in-process",
   "hooks": {
     "Stop": [
       {
@@ -78,5 +79,6 @@
         ]
       }
     ]
-  }
+  },
+  "teammateMode": "in-process"
 }
