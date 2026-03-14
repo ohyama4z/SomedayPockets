@@ -42,7 +42,9 @@
       "Bash(git commit *)",
       "Bash(git push)",
       "Bash(git push *)",
-      "Bash(bash .claude/scripts/turn-counter.sh)"
+      "Bash(bash .claude/scripts/turn-counter.sh)",
+      "WebSearch",
+      "WebFetch"
     ],
     "deny": [
       "Bash(rm -rf /*)",

@@ -36,6 +36,13 @@
 - タスクの着手・完了は `/start-task`・`/complete-task` スキルで実行する
 - 作業の途中経過はコミット・Issueコメントでこまめに永続化する
 
+## epic運用
+- 複数タスクにまたがる大きな作業単位を「epic」と呼ぶ
+- 親Issue: タイトルを `epic: <名前>` とし `epic` ラベルを付ける
+- タスク（子Issue）: 通常タイトルとし `epic: <名前>` ラベルを付け、GitHub sub-issue機能で親Issueに紐付ける
+- epic完了時: 親Issueをクローズし、完了サマリー（主要な判断経緯・参照ADR・知見リンク）をIssueコメントに残す
+- 詳細は `docs/decisions/004-epicを親Issue+ラベルで管理する.md` を参照
+
 ## 改善提案
 - 運用・開発プロセス・Claude Codeの活用方法について、気づいた改善点はその都度積極的に提案する
 
