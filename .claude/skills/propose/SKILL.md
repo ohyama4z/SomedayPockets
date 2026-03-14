@@ -1,42 +1,22 @@
 ---
 name: propose
-description: 運用・プロセス改善の提案をIssueとして起票する。AIが気づいた改善点を提案するときに自律的に呼ぶ
+description: 運用・プロセス改善の改善点に気づいたとき、提案をIssueとして起票する。AIが自律的に呼ぶ。内部でcreate-issueを呼ぶラッパー
 argument-hint: "<提案タイトル> [提案の背景と内容]"
 ---
 
 # 運用改善提案の起票
 
-$ARGUMENTS の内容から提案Issueを作成する。
+`create-issue` のラッパー。提案用の内容を整形してから `create-issue` に委譲する。
 
 ## 1. 引数を解析
 引数からタイトルと、あれば背景・内容を読み取る。
 
-## 2. Issue本文を作成
-`tmp/gh-body.md` に以下の形式で書く：
 
-```markdown
-## 提案の背景
 
-（何をしていて、どんな課題・不便を感じたか）
+## 2. `/create-issue` を呼ぶ
 
-## 提案内容
-
-（具体的に何を変えるか）
-
-## 期待する効果
-
-（改善後にどうなるか）
-```
-
-## 3. `proposal` ラベルがなければ作成
-```bash
-gh label create "proposal" --color "#e4e669" --description "運用・プロセス改善の提案" --repo ohyama4z/SomedayPockets 2>/dev/null || true
-```
-
-## 4. Issueを起票
-```bash
-gh issue create --repo ohyama4z/SomedayPockets --title "<タイトル>" --label "proposal" --body-file tmp/gh-body.md
-```
-
-## 5. ユーザーに報告
-作成したIssueのURLを伝える。
+以下の情報を渡して `/create-issue` スキルを実行する：
+- タイトル: 引数のタイトル
+- 背景・内容: 引数の背景・内容
+- ラベル: `proposal`
+- 完了条件の補足: 提案なので「採用/不採用を決定する」を完了条件に含める
