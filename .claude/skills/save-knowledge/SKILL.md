@@ -44,8 +44,12 @@ ls knowledge/
 （1つのトピックに絞って簡潔に記述）
 ```
 
-## 4. コミット
+## 4. INDEX.mdを更新
+`knowledge/INDEX.md` のテーブルに新しいファイルのエントリを追加する。サマリーは知見の核心を1行で表す。
+
+## 5. コミット
 ```bash
 git add knowledge/ファイル名
+git add knowledge/INDEX.md
 git commit -m "knowledge: タイトル"
 ```
