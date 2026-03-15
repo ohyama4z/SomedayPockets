@@ -20,3 +20,6 @@ build/
 # Temp files for Claude Code
 /tmp/
 /.claude/tmp/
+
+# Git worktrees for parallel sessions
+/.claude/worktrees/
