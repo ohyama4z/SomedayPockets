@@ -70,19 +70,29 @@ gh pr merge --merge --repo ohyama4z/SomedayPockets
 ```
 マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 9. in-progressラベルを除去
+## 9. Issueのクローズ確認
+マージ後にIssueが自動クローズされたか確認する：
+```bash
+gh issue view <番号> --repo ohyama4z/SomedayPockets --json state --jq .state
+```
+`OPEN` のままであれば手動でクローズする：
+```bash
+gh issue close <番号> --repo ohyama4z/SomedayPockets
+```
+
+## 10. in-progressラベルを除去
 ```bash
 gh issue edit <番号> --repo ohyama4z/SomedayPockets --remove-label "in-progress"
 ```
 
-## 10. mainに戻ってブランチを削除
+## 11. mainに戻ってブランチを削除
 ```bash
 git checkout main
 git pull
 git branch -d <ブランチ名>
 ```
 
-## 11. 報告
+## 12. 報告
 - マージされたPRのURL
 - クローズされたIssue番号
 - プロセスレビューで起票した提案があればそのURL
