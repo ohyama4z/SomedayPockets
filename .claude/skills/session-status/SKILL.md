@@ -31,10 +31,8 @@ gh issue view <番号> --repo ohyama4z/SomedayPockets --comments
 ```
 
 ## 3. 知見を読み込む
-`knowledge/` 配下のファイル一覧を確認し、直近の知見や今後の作業に関連しそうなものがあれば読み込む。
-```bash
-ls knowledge/
-```
+`knowledge/INDEX.md` を読み、今回の作業に関連しそうなファイルがあればその本文を読み込む。
+INDEXが存在しない場合は `ls knowledge/` にフォールバックする。
 
 ## 4. Gitの状態を確認
 ```bash
