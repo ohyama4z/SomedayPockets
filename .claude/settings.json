@@ -49,7 +49,17 @@
       "Bash(git -C *)",
       "Bash(bash .claude/scripts/turn-counter.sh)",
       "WebSearch",
-      "WebFetch"
+      "WebFetch",
+      "Edit(/notes/**)",
+      "Edit(/.claude/skills/**)",
+      "Edit(/.claude/scripts/**)",
+      "Edit(/.claude/agents/**)",
+      "Write(/notes/**)",
+      "Write(/.claude/skills/**)",
+      "Write(/.claude/scripts/**)",
+      "Write(/.claude/agents/**)",
+      "Agent",
+      "Bash(bash .claude/scripts/*)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
