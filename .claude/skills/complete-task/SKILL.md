@@ -62,21 +62,26 @@ epicタスクの場合、ステップ5で完了サマリーの投稿が必要。
 gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
 ```
 
-## 6. プロセスレビュー
+## 6. in-progressラベルを除去
+```bash
+gh issue edit <番号> --repo ohyama4z/SomedayPockets --remove-label "in-progress"
+```
+
+## 7. プロセスレビュー
 `/review-process` スキルを実行する。見つかった改善点はIssue起票のみ行い、PRマージはブロックしない。
 
-## 7. ドラフトPRをReadyに変更
+## 8. ドラフトPRをReadyに変更
 ```bash
 gh pr ready --repo ohyama4z/SomedayPockets
 ```
 
-## 8. PRをマージ
+## 9. PRをマージ
 ```bash
 gh pr merge --merge --repo ohyama4z/SomedayPockets
 ```
 マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 9. Issueのクローズ確認
+## 10. Issueのクローズ確認
 マージ後にIssueが自動クローズされたか確認する：
 ```bash
 gh issue view <番号> --repo ohyama4z/SomedayPockets --json state --jq .state
@@ -84,11 +89,6 @@ gh issue view <番号> --repo ohyama4z/SomedayPockets --json state --jq .state
 `OPEN` のままであれば手動でクローズする：
 ```bash
 gh issue close <番号> --repo ohyama4z/SomedayPockets
-```
-
-## 10. in-progressラベルを除去
-```bash
-gh issue edit <番号> --repo ohyama4z/SomedayPockets --remove-label "in-progress"
 ```
 
 ## 11. mainに戻ってブランチを削除
