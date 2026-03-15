@@ -62,7 +62,7 @@ gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body-file tmp/gh-bo
 ```
 
 ## 7. 初回pushしてドラフトPRを作成
-空コミットを作成し、pushしてからドラフトPRを作成する。PR本文に `Closes #番号` を含める：
+空コミットを作成し、pushしてからドラフトPRを作成する：
 ```bash
 git commit --allow-empty -m "chore: Issue #$ARGUMENTS の作業開始"
 git push -u origin HEAD
