@@ -47,6 +47,8 @@
       "Bash(git push *)",
       "Bash(git worktree *)",
       "Bash(git -C *)",
+      "Bash(bash .claude/scripts/start-task.sh *)",
+      "Bash(bash .claude/scripts/complete-task.sh *)",
       "WebSearch",
       "WebFetch",
       "Edit(/notes/**)",

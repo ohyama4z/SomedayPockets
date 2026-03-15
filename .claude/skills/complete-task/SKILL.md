@@ -2,17 +2,10 @@
 name: complete-task
 description: 現在の作業ブランチのドラフトPRをReadyにしてmainにマージし、タスクを完了する
 allowed-tools:
+  - Bash(bash .claude/scripts/complete-task.sh *)
   - Bash(git status)
   - Bash(git log *)
-  - Bash(git checkout *)
-  - Bash(git pull)
-  - Bash(git branch *)
-  - Bash(git push)
-  - Bash(git push *)
-  - Bash(git worktree *)
-  - Bash(gh pr ready *)
-  - Bash(gh pr merge --merge *)
-  - Bash(gh issue edit *)
+  - Bash(git -C *)
   - Bash(gh issue view *)
   - Bash(gh issue comment *)
   - Read
@@ -63,48 +56,17 @@ epicタスクの場合、ステップ5で完了サマリーの投稿が必要。
 gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
 ```
 
-## 6. in-progressラベルを除去
-```bash
-gh issue edit <番号> --repo ohyama4z/SomedayPockets --remove-label "in-progress"
-```
-
-## 7. プロセスレビュー
+## 6. プロセスレビュー
 `/review-process` スキルを実行する。見つかった改善点はIssue起票のみ行い、PRマージはブロックしない。
 
-## 8. ドラフトPRをReadyに変更
+## 7. 定型処理を実行
+in-progressラベル除去・PRをReady・マージ・worktree削除・ブランチ整理を一括実行する：
 ```bash
-gh pr ready --repo ohyama4z/SomedayPockets
-```
-
-## 9. PRをマージ
-```bash
-gh pr merge --merge --repo ohyama4z/SomedayPockets
+bash .claude/scripts/complete-task.sh <番号>
 ```
 マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 10. Issueのクローズ確認
-マージ後にIssueが自動クローズされたか確認する：
-```bash
-gh issue view <番号> --repo ohyama4z/SomedayPockets --json state --jq .state
-```
-`OPEN` のままであれば手動でクローズする：
-```bash
-gh issue close <番号> --repo ohyama4z/SomedayPockets
-```
-
-## 11. worktreeを削除してブランチを整理
-worktree内で作業している場合は、まずメインディレクトリに戻ってからworktreeを削除する：
-```bash
-git worktree remove .claude/worktrees/issue-<番号>
-```
-ブランチはマージ済みなので削除する：
-```bash
-git checkout main
-git pull
-git branch -d <ブランチ名>
-```
-
-## 12. 報告
+## 8. 報告
 - マージされたPRのURL
 - クローズされたIssue番号
 - プロセスレビューで起票した提案があればそのURL
