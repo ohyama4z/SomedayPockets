@@ -47,7 +47,6 @@
       "Bash(git push *)",
       "Bash(git worktree *)",
       "Bash(git -C *)",
-      "Bash(bash .claude/scripts/turn-counter.sh)",
       "WebSearch",
       "WebFetch"
     ],
@@ -71,17 +70,5 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "teammateMode": "in-process",
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash .claude/scripts/turn-counter.sh"
-          }
-        ]
-      }
-    ]
-  }
+  "teammateMode": "in-process"
 }
