@@ -11,3 +11,4 @@
 | 2026-03-14_T28_5_permissions.allowにスキル用コマンドも必要.md | スキル内Bashコマンドもsettings.jsonのpermissions.allowに必要 |
 | 2026-03-14_T36_1_Claude_Code権限設計.md | permissions設計原則、&&チェーンの制約、deny優先ルール |
 | 2026-03-15_T40_1_GitHub_sub-issue_API.md | gh apiでsub-issueを操作する方法（内部IDが必要） |
+| 2026-03-15_T16_1_Cloudflareデプロイ環境構築.md | @opennextjs/cloudflare導入手順、SSH環境でのAPIトークン認証、設定ファイル一覧 |
