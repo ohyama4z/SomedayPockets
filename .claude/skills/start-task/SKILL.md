@@ -67,7 +67,7 @@ gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body-file tmp/gh-bo
 git commit --allow-empty -m "chore: Issue #$ARGUMENTS の作業開始"
 git push -u origin HEAD
 ```
-PR本文は `tmp/gh-body.md` に書いてから作成する：
+PR本文は `.github/pull_request_template.md` をベースに `tmp/gh-body.md` に書いてから作成する：
 ```bash
 gh pr create --repo ohyama4z/SomedayPockets --draft --title "<タイトル>" --body-file tmp/gh-body.md
 ```
