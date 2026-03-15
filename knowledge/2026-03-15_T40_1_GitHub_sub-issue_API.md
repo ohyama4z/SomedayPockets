@@ -1,4 +1,4 @@
-# GitHub sub-issue API の操作方法
+# GitHub sub-issue APIの操作方法
 
 - **日付**: 2026-03-15
 - **チケット**: #40
@@ -25,7 +25,3 @@ gh api repos/ohyama4z/SomedayPockets/issues/<親番号>/sub_issues \
 
 **注意**: `--jq .id` で取れるのは内部数値ID（例: 12345678）で、issue番号（#40など）とは別物。
 
-### allowed-tools フロントマターについて
-- `allowed-tools` はClaude Code CLIで正式サポートされているSKILL.mdのフロントマターキー
-- IDEの拡張機能のスキーマが古く警告が出るが無視してよい
-- ただし [issue #18837](https://github.com/anthropics/claude-code/issues/18837) でランタイムで強制されないバグが報告されている（現時点では宣言的ドキュメントとして機能）
