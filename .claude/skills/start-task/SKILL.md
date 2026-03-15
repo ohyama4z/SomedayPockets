@@ -85,26 +85,4 @@ gh pr create --repo ohyama4z/SomedayPockets --draft --title "<タイトル>" --b
 - worktreeパス（別ターミナルで `cd <path>` → `claude` で並行作業可能）
 
 ## 補足: epic
-
-### epicとは
-複数タスクにまたがる大きな作業単位。
-
-### epicの構造
-- 親Issue: タイトルを `epic: <名前>`、ラベルは `epic`
-- 子Issue（タスク）: 通常タイトル、ラベルは `epic: <名前>`
-
-### epicに属するタスクを着手する場合
-1. `epic: <名前>` ラベルをIssueに付与する
-2. GitHub sub-issue機能で親epicにタスクを登録する：
-```bash
-CHILD_ID=$(gh api repos/ohyama4z/SomedayPockets/issues/<子番号> --jq .id)
-gh api repos/ohyama4z/SomedayPockets/issues/<親番号>/sub_issues \
-  -X POST -F sub_issue_id=$CHILD_ID
-```
-
-### 新しいepicを立ち上げる場合
-1. 親Issueを `epic: <名前>` タイトルで作成し `epic` ラベルを付ける
-2. `epic: <名前>` ラベルを新規作成する（存在しない場合）：
-```bash
-gh label create "epic: <名前>" --repo ohyama4z/SomedayPockets --color "<color>"
-```
+Issueに `epic: <名前>` ラベルが付いている場合、CLAUDE.mdの「epic運用」セクションに従ってラベル付与・sub-issue登録を行う。
