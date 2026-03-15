@@ -43,6 +43,14 @@
 - epic完了時: 親Issueをクローズし、完了サマリー（主要な判断経緯・参照ADR・知見リンク）をIssueコメントに残す
 - 詳細は `docs/decisions/004-epicを親Issue+ラベルで管理する.md` を参照
 
+## 並行作業（git worktree）
+- `/start-task` はworktreeを `.claude/worktrees/issue-<番号>` に自動作成する
+- 並行作業の手順:
+  1. `/start-task <番号>` を実行する（ブランチ作成・worktree作成・PR作成まで一括）
+  2. 別ターミナルで `cd .claude/worktrees/issue-<番号>` → `claude` で作業開始
+- worktree削除: `git worktree remove .claude/worktrees/issue-<番号>`
+- メインディレクトリは常に `main` ブランチに留める
+
 ## 改善提案
 - 運用・開発プロセス・Claude Codeの活用方法について、気づいた改善点はその都度積極的に提案する
 

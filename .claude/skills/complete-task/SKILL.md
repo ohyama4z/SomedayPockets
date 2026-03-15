@@ -9,6 +9,7 @@ allowed-tools:
   - Bash(git branch *)
   - Bash(git push)
   - Bash(git push *)
+  - Bash(git worktree *)
   - Bash(gh pr ready *)
   - Bash(gh pr merge --merge *)
   - Bash(gh issue edit *)
@@ -91,7 +92,12 @@ gh issue view <番号> --repo ohyama4z/SomedayPockets --json state --jq .state
 gh issue close <番号> --repo ohyama4z/SomedayPockets
 ```
 
-## 11. mainに戻ってブランチを削除
+## 11. worktreeを削除してブランチを整理
+worktree内で作業している場合は、まずメインディレクトリに戻ってからworktreeを削除する：
+```bash
+git worktree remove .claude/worktrees/issue-<番号>
+```
+ブランチはマージ済みなので削除する：
 ```bash
 git checkout main
 git pull

@@ -9,9 +9,11 @@ allowed-tools:
   - Bash(gh pr create *)
   - Bash(git checkout *)
   - Bash(git pull)
+  - Bash(git branch *)
   - Bash(git commit *)
   - Bash(git push)
   - Bash(git push *)
+  - Bash(git worktree *)
   - Bash(ls *)
   - Read
   - Write
@@ -33,11 +35,15 @@ git checkout main
 git pull
 ```
 
-## 3. 作業ブランチを作成
-Issueのタイトルから簡潔な英語名をつける：
+## 3. 作業ブランチとworktreeを作成
+Issueのタイトルから簡潔な英語名をつける。ブランチを作成し、worktreeを切る：
 ```bash
-git checkout -b issue/$ARGUMENTS-<簡潔な名前>
+git branch issue/$ARGUMENTS-<簡潔な名前> main
+git worktree add .claude/worktrees/issue-$ARGUMENTS issue/$ARGUMENTS-<簡潔な名前>
 ```
+以降の操作（コミット・push等）はworktreeディレクトリ内で実行する。
+- worktreeのパス: `.claude/worktrees/issue-$ARGUMENTS`
+- Bashコマンドには `-C` オプション（`git -C <path>`）か、`--git-dir` を使ってworktree内で実行する
 
 ## 4. in-progressラベルを付与
 ```bash
@@ -62,10 +68,10 @@ gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body-file tmp/gh-bo
 ```
 
 ## 7. 初回pushしてドラフトPRを作成
-空コミットを作成し、pushしてからドラフトPRを作成する：
+worktreeディレクトリ内で空コミットを作成し、pushしてからドラフトPRを作成する：
 ```bash
-git commit --allow-empty -m "chore: Issue #$ARGUMENTS の作業開始"
-git push -u origin HEAD
+git -C .claude/worktrees/issue-$ARGUMENTS commit --allow-empty -m "chore: Issue #$ARGUMENTS の作業開始"
+git -C .claude/worktrees/issue-$ARGUMENTS push -u origin HEAD
 ```
 PR本文は `.github/pull_request_template.md` をベースに `tmp/gh-body.md` に書いてから作成する：
 ```bash
@@ -76,6 +82,7 @@ gh pr create --repo ohyama4z/SomedayPockets --draft --title "<タイトル>" --b
 - 作成したブランチ名
 - ドラフトPRのURL
 - 作業計画の概要
+- worktreeパス（別ターミナルで `cd <path>` → `claude` で並行作業可能）
 
 ## 補足: epic
 
