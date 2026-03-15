@@ -3,7 +3,7 @@
 
 COUNTER_FILE="$(dirname "$0")/../tmp/turn-counter"
 mkdir -p "$(dirname "$COUNTER_FILE")"
-N=10
+N="${CLAUDE_REVIEW_INTERVAL:-10}"
 
 count=$(cat "$COUNTER_FILE" 2>/dev/null || echo 0)
 count=$((count + 1))
