@@ -43,6 +43,14 @@ echo "--- ブランチとworktreeを作成 ---"
 git branch "$BRANCH_NAME" main
 git worktree add "$WORKTREE_PATH" "$BRANCH_NAME"
 
+# --- 3.5. settings.local.jsonをシンボリックリンク ---
+LOCAL_SETTINGS=".claude/settings.local.json"
+if [ -f "$LOCAL_SETTINGS" ]; then
+  ABSOLUTE_LOCAL_SETTINGS="$(cd "$(dirname "$LOCAL_SETTINGS")" && pwd)/$(basename "$LOCAL_SETTINGS")"
+  ln -sf "$ABSOLUTE_LOCAL_SETTINGS" "${WORKTREE_PATH}/.claude/settings.local.json"
+  echo "settings.local.json をシンボリックリンクしました"
+fi
+
 # --- 4. in-progressラベルを付与 ---
 echo "--- in-progressラベルを付与 ---"
 gh issue edit "$ISSUE_NUM" --repo "$REPO" --add-label "in-progress"
