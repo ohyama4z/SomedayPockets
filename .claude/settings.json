@@ -60,7 +60,13 @@
       "Write(/.claude/scripts/**)",
       "Write(/.claude/agents/**)",
       "Agent",
-      "Bash(bash .claude/scripts/*)"
+      "Bash(bash .claude/scripts/*)",
+      "Skill(start-task)",
+      "Skill(start-task:*)",
+      "Skill(complete-task)",
+      "Skill(complete-task:*)",
+      "Skill(review-process)",
+      "Skill(review-process:*)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
@@ -82,5 +88,18 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "teammateMode": "in-process"
+  "teammateMode": "tmux",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '次のコマンドを実行してください: /loop 10m /review-process'"
+          }
+        ]
+      }
+    ]
+  }
 }
