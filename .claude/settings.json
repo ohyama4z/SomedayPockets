@@ -96,7 +96,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '次のコマンドを実行してください: /loop 10m /review-process'"
+            "command": "bash .claude/scripts/session-start.sh"
           }
         ]
       }
