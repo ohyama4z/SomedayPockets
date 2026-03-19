@@ -12,4 +12,6 @@
 | 2026-03-14_T36_1_Claude_Code権限設計.md | permissions設計原則、&&チェーンの制約、deny優先ルール |
 | 2026-03-15_T40_1_GitHub_sub-issue_API.md | gh apiでsub-issueを操作する方法（内部IDが必要） |
 | 2026-03-15_T16_1_Cloudflareデプロイ環境構築.md | @opennextjs/cloudflare導入手順、SSH環境でのAPIトークン認証、設定ファイル一覧 |
-| 2026-03-19_T17_1_D1とDrizzleORMの導入手順.md | D1作成・Drizzle設定・マイグレーション・Next.jsからの接続方法 |
+| 2026-03-19_T17_1_D1データベース作成とAPIトークン権限.md | D1作成コマンドとAPIトークンに必要な権限（D1 Edit） |
+| 2026-03-19_T17_2_DrizzleORMとwranglerのマイグレーション連携.md | Drizzle設定・migrations_dirの不一致・マイグレーション適用手順 |
+| 2026-03-19_T17_3_NextjsAppRouterからD1への接続.md | getCloudflareContext経由のD1接続とenv.d.ts型定義 |
