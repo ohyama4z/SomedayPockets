@@ -7,5 +7,13 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "someday-pockets-db",
+      "database_id": "09288a14-5000-4c5e-81e3-a07dfc119475",
+      "migrations_dir": "drizzle"
+    }
+  ]
 }
