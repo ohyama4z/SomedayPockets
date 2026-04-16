@@ -8,7 +8,6 @@ allowed-tools:
   - Bash(gh issue comment *)
   - Bash(ls *)
   - Read
-  - Write
   - Glob
 ---
 
@@ -39,9 +38,12 @@ Issue内容を踏まえて作業計画を立てる。サブタスクはチェッ
 - 粒度が大きいサブタスクは子Issueに切り出し、`- [ ] #番号` でリンクする
 - 小さいサブタスクはチェックリストのままで管理する
 
-コメントは `tmp/gh-body.md` に書いてから投稿する：
+コメントはヒアドキュメントで直接渡す：
 ```bash
-gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
+gh issue comment $ARGUMENTS --repo ohyama4z/SomedayPockets --body "$(cat <<'EOF'
+<コメント本文>
+EOF
+)"
 ```
 
 ## 5. ユーザーに報告

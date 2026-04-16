@@ -5,7 +5,6 @@ argument-hint: "<タイトル> [概要や背景の説明]"
 allowed-tools:
   - Bash(gh issue create *)
   - Read
-  - Write
 ---
 
 # Issue作成
@@ -16,7 +15,7 @@ $ARGUMENTS の内容からIssueを作成する。
 引数からタイトルと、あれば概要・背景を読み取る。
 
 ## 2. Issue本文を作成
-以下のテンプレートに沿って `tmp/gh-body.md` に本文を書く。
+以下のテンプレートに沿って本文を生成する。
 **すべてのセクション見出しを必ず残す。** 内容がない場合も見出しは省略しない。
 
 ```markdown
@@ -40,7 +39,10 @@ $ARGUMENTS の内容からIssueを作成する。
 
 ## 3. Issueを投稿
 ```bash
-gh issue create --repo ohyama4z/SomedayPockets --title "<タイトル>" --body-file tmp/gh-body.md
+gh issue create --repo ohyama4z/SomedayPockets --title "<タイトル>" --body "$(cat <<'EOF'
+<本文>
+EOF
+)"
 ```
 
 ## 4. ユーザーに報告
