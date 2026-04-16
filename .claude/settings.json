@@ -5,10 +5,7 @@
       "Edit(/docs/**)",
       "Edit(/app/**)",
       "Edit(/knowledge/**)",
-      "Edit(tmp/*)",
       "Edit(/.gitignore)",
-      "Write(/tmp/*)",
-      "Write(tmp/*)",
       "Write(/docs/**)",
       "Write(/app/**)",
       "Write(/knowledge/**)",
@@ -27,8 +24,6 @@
       "Bash(gh issue comment *)",
       "Bash(gh issue edit *)",
       "Bash(gh label *)",
-      "Bash(gh api repos/ohyama4z/SomedayPockets/issues/*)",
-      "Bash(gh api repos/ohyama4z/SomedayPockets/issues/* *)",
       "Bash(gh pr view *)",
       "Bash(gh pr list *)",
       "Bash(gh pr create *)",
@@ -46,7 +41,6 @@
       "Bash(git push)",
       "Bash(git push *)",
       "Bash(git worktree *)",
-      "Bash(git -C *)",
       "Bash(bash .claude/scripts/start-task.sh *)",
       "Bash(bash .claude/scripts/complete-task.sh *)",
       "WebSearch",
@@ -90,6 +84,17 @@
   },
   "teammateMode": "tmux",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-banned-patterns.sh"
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "startup",

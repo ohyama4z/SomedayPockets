@@ -5,7 +5,6 @@ argument-hint: "<提案タイトル> [提案の背景と内容]"
 allowed-tools:
   - Bash(gh issue create *)
   - Read
-  - Write
 ---
 
 # 運用改善提案の起票

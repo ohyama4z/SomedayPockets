@@ -5,11 +5,9 @@ allowed-tools:
   - Bash(bash .claude/scripts/complete-task.sh *)
   - Bash(git status)
   - Bash(git log *)
-  - Bash(git -C *)
   - Bash(gh issue view *)
   - Bash(gh issue comment *)
   - Read
-  - Write
   - Glob
 ---
 
@@ -53,7 +51,10 @@ epicタスクの場合、ステップ5で完了サマリーの投稿が必要。
 - notes/へのリンク（`notes/` のファイル名）
 
 ```bash
-gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
+gh issue comment <番号> --repo ohyama4z/SomedayPockets --body "$(cat <<'EOF'
+<コメント本文>
+EOF
+)"
 ```
 
 ## 6. プロセスレビュー

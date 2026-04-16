@@ -1,6 +1,6 @@
 ---
 name: save-progress
-description: 変更をadd→commit→pushする。コミットメッセージ規則・一時ファイル経由の運用ルールを含む
+description: 変更をadd→commit→pushする。コミットメッセージ規則を含む
 allowed-tools:
   - Bash(git status)
   - Bash(git diff *)
@@ -11,7 +11,6 @@ allowed-tools:
   - Bash(git push *)
   - Bash(gh issue comment *)
   - Read
-  - Write
 ---
 
 # 変更の保存（add → commit → push）
@@ -40,7 +39,7 @@ allowed-tools:
 `&&`を使って複数のコマンドを繋げるのは禁止。必ずコマンドごとにBash呼び出しを分けること。
 
 ### 1. コミットメッセージを自動生成
-`git status` と `git diff` を読んで変更内容を把握し、コミットメッセージ規則に従ったドラフトを生成して `tmp/commit-msg.txt` に書く。
+`git status` と `git diff` を読んで変更内容を把握し、コミットメッセージ規則に従ったドラフトを生成する。
 
 ### 2. 判断経緯・ハマりポイントの記録（該当する場合のみ）
 今回のコミットに関連する判断経緯・ハマりポイント・調査結果などがあれば、`notes/日付_T番号_タイトル.md` に書き出す。特筆すべきことがなければスキップ。
@@ -52,7 +51,10 @@ git add <対象ファイル>
 
 ### 4. コミット
 ```bash
-git commit -F tmp/commit-msg.txt
+git commit -m "$(cat <<'EOF'
+<コミットメッセージ>
+EOF
+)"
 ```
 
 ### 5. push
@@ -63,7 +65,10 @@ git push
 ### 6. Issueチェックリストの更新（区切りのタイミングで）
 サブタスクが完了した区切りのよいタイミングで、Issueコメントのチェックリストを更新する。毎コミットでは不要。
 ```bash
-gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body.md
+gh issue comment <番号> --repo ohyama4z/SomedayPockets --body "$(cat <<'EOF'
+<コメント本文>
+EOF
+)"
 ```
 既存コメントの編集ができない場合は、進捗を新しいコメントとして追記する。
 
@@ -71,4 +76,3 @@ gh issue comment <番号> --repo ohyama4z/SomedayPockets --body-file tmp/gh-body
 - 作業単位ごとに逐一コミットする（ロールバック可能にするため）
 - ユーザーの確認なしで自動的にコミットしてよい
 - 未pushの大量変更を溜め込まない
-- Issueコメント・PR本文は `tmp/gh-body.md` に書いてから `--body-file tmp/gh-body.md` で渡す

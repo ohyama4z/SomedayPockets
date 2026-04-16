@@ -15,3 +15,4 @@
 | 2026-03-19_T17_1_D1データベース作成とAPIトークン権限.md | D1作成コマンドとAPIトークンに必要な権限（D1 Edit） |
 | 2026-03-19_T17_2_DrizzleORMとwranglerのマイグレーション連携.md | Drizzle設定・migrations_dirの不一致・マイグレーション適用手順 |
 | 2026-03-19_T17_3_NextjsAppRouterからD1への接続.md | getCloudflareContext経由のD1接続とenv.d.ts型定義 |
+| 2026-04-17_T96_1_PreToolUseフックでコマンドガードレール.md | PreToolUseフックで禁止コマンドパターンを検出・ブロックする方法 |
