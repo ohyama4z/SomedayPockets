@@ -47,7 +47,7 @@ allowed-tools:
 ## 3. permissions.allowの確認・更新
 `.claude/settings.json` の `permissions.allow` を確認し、新スキルが使うコマンドで未登録のものをリストアップする。
 
-不足しているエントリがある場合は一覧を提示し、ユーザー確認のうえ `.claude/settings.json` に追加する。
+不足しているエントリがある場合は `AskUserQuestion` のselection形式で追加の可否を確認し、承認されたら `.claude/settings.json` に追加する。
 
 ## 4. コミット
 変更をコミット・pushする（`/save-progress` スキルの手順に従う）。
