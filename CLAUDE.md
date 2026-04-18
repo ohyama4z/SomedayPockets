@@ -49,6 +49,7 @@
 - 並行作業の手順:
   1. `/start-task <番号>` を実行する（ブランチ作成・worktree作成・PR作成まで一括）
   2. 別ターミナルで `cd .claude/worktrees/issue-<番号>` → `claude` で作業開始
+- 同一セッションでworktreeを操作する場合: Bashツールで `cd <worktreeパス>` を実行してcwdを移動し、以降は直接gitコマンドを使う（cwdはBash呼び出し間で維持される）
 - worktree削除: `git worktree remove .claude/worktrees/issue-<番号>`
 - メインディレクトリは常に `main` ブランチに留める
 
