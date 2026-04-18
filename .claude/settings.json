@@ -60,7 +60,19 @@
       "Skill(complete-task)",
       "Skill(complete-task:*)",
       "Skill(review-process)",
-      "Skill(review-process:*)"
+      "Skill(review-process:*)",
+      "Skill(session-status)",
+      "Skill(session-status:*)",
+      "Skill(save-knowledge)",
+      "Skill(save-knowledge:*)",
+      "Skill(create-skill)",
+      "Skill(create-skill:*)",
+      "Skill(propose)",
+      "Skill(propose:*)",
+      "Skill(create-issue)",
+      "Skill(create-issue:*)",
+      "Skill(save-progress)",
+      "Skill(save-progress:*)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
