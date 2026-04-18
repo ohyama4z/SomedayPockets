@@ -1,11 +1,18 @@
-# allowed-toolsはランタイム未強制
+# allowed-toolsはスキル実行中のツール事前承認に使える
 
-- **日付**: 2026-03-14
-- **チケット**: #28
+- **日付**: 2026-03-14（2026-04-18更新）
+- **チケット**: #28, #89
 - **作業**: 運用提案スキル・プロセスレビュースキルの作成
 
 ## 知見
 
-SKILL.mdのフロントマターに `allowed-tools` を書いても、現時点ではランタイムでツール使用が制限されない（[claude-code#18837](https://github.com/anthropics/claude-code/issues/18837)）。
-宣言的ドキュメントとしてのみ機能する。実行制御は `settings.json` の `permissions` で行うこと。
-→ バグ修正後に方針を見直す。
+SKILL.mdのフロントマターの `allowed-tools` は現在サポートされている（公式ドキュメントで確認済み）。
+
+- スキル実行中にリストされたツールを許可確認なしで使えるようにする
+- ツールの使用を**制限**するものではない（他のツールも引き続き使える）
+- ツールをブロックしたい場合は `settings.json` の `permissions.deny` で制御する
+- スペース区切りの文字列またはYAMLリストで指定可能
+
+```yaml
+allowed-tools: Bash(git add *) Bash(git commit *) Bash(git status *)
+```
