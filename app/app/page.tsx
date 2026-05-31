@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Item, Lane } from "@/lib/types";
-import { fetchItems, createItem, moveItem, completeItem, deleteItem } from "@/lib/api";
+import { fetchItems, createItem, moveItem, completeItem, deleteItem, reorderItems } from "@/lib/api";
 import { CaptureForm } from "@/components/capture-form/capture-form";
 import { LaneColumn } from "@/components/lane/lane-column";
 
@@ -41,6 +41,30 @@ export default function Home() {
     await reload();
   };
 
+  const handleReorder = async (activeId: string, overId: string) => {
+    const nextItems = items
+      .filter((item) => item.lane === "next" && !item.completed)
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+
+    const oldIndex = nextItems.findIndex((i) => i.id === activeId);
+    const newIndex = nextItems.findIndex((i) => i.id === overId);
+    if (oldIndex === -1 || newIndex === -1) return;
+
+    const reordered = [...nextItems];
+    const [moved] = reordered.splice(oldIndex, 1);
+    reordered.splice(newIndex, 0, moved);
+
+    // 楽観的にUIを更新
+    const updatedItems = items.map((item) => {
+      const idx = reordered.findIndex((r) => r.id === item.id);
+      if (idx !== -1) return { ...item, sortOrder: idx };
+      return item;
+    });
+    setItems(updatedItems);
+
+    await reorderItems(reordered.map((i) => i.id));
+  };
+
   const byLane = (lane: Lane) => items.filter((item) => item.lane === lane);
 
   return (
@@ -72,6 +96,7 @@ export default function Home() {
             items={byLane("next")}
             onComplete={handleComplete}
             onDelete={handleDelete}
+            onReorder={handleReorder}
           />
         </div>
       </div>
