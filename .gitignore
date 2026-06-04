@@ -1,9 +1,14 @@
 # Dependencies
 node_modules/
 
-# Environment
+# Environment / Secrets
 .env
-.env.local
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+# Claude Code ローカル設定（秘密や端末固有設定を含みうる）
+.claude/settings.local.json
 
 # OS
 .DS_Store

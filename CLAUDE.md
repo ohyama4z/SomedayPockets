@@ -77,3 +77,19 @@
 - **デプロイ**: Cloudflare Pages (@opennextjs/cloudflare)
 - **認証**: Cloudflare Access
 - 詳細は `docs/spec/技術スタック.md` を参照
+
+## 秘密管理
+パブリックリポ×完全auto modeのため、秘密情報（APIキー・トークン・認証情報）は絶対にコミットしない。
+
+### 格納先の使い分け
+- **ローカルのClaude Code設定値・端末固有設定**: `.claude/settings.local.json`（`.gitignore` 済み・コミット禁止）
+- **ローカル開発の環境変数・秘密**: `.dev.vars` / `.env*`（`.gitignore` 済み・コミット禁止。`.env.example` のみ値を伏せて共有可）
+- **本番（Cloudflare Workers/Pages）の秘密**: `wrangler secret put <NAME>` で登録する（コードや `wrangler.jsonc` に直接書かない）
+- **CI（GitHub Actions）の秘密**: GitHub Secrets（`secrets.*`）に登録する
+- 注意: `wrangler.jsonc` の D1 `database_id` 等の「公開しても危険でないリソースID」は秘密ではない（コミット可）
+
+### コミット前チェック（多層ガードレール）
+- **CI（第一防壁）**: `.github/workflows/ci.yml` の `secret-scan` job が gitleaks でフル履歴をスキャンし、検知時はpush/PRをblockする
+- **ローカル（補助防壁）**: `bash .claude/hooks/install-git-hooks.sh` で pre-commit フックを有効化すると、コミット前に gitleaks（バイナリ or docker）でステージ済み変更をスキャンする
+- 誤検知は `.gitleaks.toml` の allowlist で対応する（穴を広げる安易な無効化はしない）
+- 秘密を誤コミットした場合は履歴改変が必要なため、必ずユーザーに報告する
