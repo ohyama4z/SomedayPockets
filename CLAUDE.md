@@ -33,7 +33,7 @@
 ## タスク運用
 - GitHub Issues（ohyama4z/SomedayPockets）でタスクを管理する
 - 作業は必ずIssue起点で行う（Issue作成は `/create-issue` スキルで実行する）
-- セッション開始時は `gh issue list` でオープンなIssueを確認し、`in-progress` があればコメントから途中経過を把握する
+- セッション開始時のタスク状態（進行中タスク・オープンなIssue・ブランチ・未コミット変更・直近コミット）はSessionStartフックが自動出力するため、その出力を確認する。`in-progress` があればコメントから途中経過を把握する（フック出力で不足する場合は `/session-status` を実行する）
 - タスクの着手・完了は `/start-task`・`/complete-task` スキルで実行する
 - 作業の途中経過はコミット・Issueコメントでこまめに永続化する
 
