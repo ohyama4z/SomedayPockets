@@ -1,6 +1,7 @@
 "use client";
 
 import type { Item, Lane } from "@/lib/types";
+import { getNextLane, laneLabel } from "@/lib/lane";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowRight, GripVertical, Trash2 } from "lucide-react";
@@ -28,7 +29,8 @@ export function ItemCard({
     <div className="group flex items-center gap-2 rounded-lg border bg-card p-3 text-sm transition-colors hover:bg-muted/50">
       {showDragHandle && (
         <button
-          className="cursor-grab text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
+          type="button"
+          className="touch-none cursor-grab text-muted-foreground active:cursor-grabbing"
           {...dragHandleProps}
         >
           <GripVertical className="size-4" />
@@ -70,26 +72,4 @@ export function ItemCard({
       </div>
     </div>
   );
-}
-
-function getNextLane(current: Lane): Lane | null {
-  switch (current) {
-    case "inbox":
-      return "stock";
-    case "stock":
-      return "next";
-    default:
-      return null;
-  }
-}
-
-function laneLabel(lane: Lane): string {
-  switch (lane) {
-    case "inbox":
-      return "インボックス";
-    case "stock":
-      return "ストック";
-    case "next":
-      return "ネクスト";
-  }
 }

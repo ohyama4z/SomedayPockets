@@ -5,6 +5,9 @@ import type { Item, Lane } from "@/lib/types";
 import { fetchItems, createItem, moveItem, completeItem, deleteItem, reorderItems } from "@/lib/api";
 import { CaptureForm } from "@/components/capture-form/capture-form";
 import { LaneColumn } from "@/components/lane/lane-column";
+import { Button } from "@/components/ui/button";
+import { Archive } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const [items, setItems] = useState<Item[]>([]);
@@ -65,28 +68,35 @@ export default function Home() {
     await reorderItems(reordered.map((i) => i.id));
   };
 
-  const byLane = (lane: Lane) => items.filter((item) => item.lane === lane);
+  const byLane = (lane: Lane) => {
+    const filtered = items.filter((item) => item.lane === lane);
+    if (lane === "next") {
+      return filtered.sort((a, b) => a.sortOrder - b.sortOrder);
+    }
+    return filtered;
+  };
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
       <div className="mx-auto max-w-5xl px-4 py-8">
         <header className="mb-8">
-          <h1 className="mb-4 text-2xl font-bold tracking-tight">SomedayPockets</h1>
+          <div className="mb-4 flex items-center justify-between">
+            <h1 className="text-2xl font-bold tracking-tight">SomedayPockets</h1>
+            <Link href="/stock">
+              <Button variant="outline" size="sm">
+                <Archive className="size-3.5" />
+                ストック
+              </Button>
+            </Link>
+          </div>
           <CaptureForm onCapture={handleCapture} />
         </header>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           <LaneColumn
             title="インボックス"
             lane="inbox"
             items={byLane("inbox")}
-            onMove={handleMove}
-            onDelete={handleDelete}
-          />
-          <LaneColumn
-            title="ストック"
-            lane="stock"
-            items={byLane("stock")}
             onMove={handleMove}
             onDelete={handleDelete}
           />
