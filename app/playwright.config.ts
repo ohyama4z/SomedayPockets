@@ -18,23 +18,23 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
-  webServer: {
-    // dev サーバの出力はファイルへ逃がす。
-    // `next dev` は D1(miniflare) 用に workerd を子プロセスとして起動するが、
-    // この workerd は teardown 時のプロセスグループ kill を生き延びることがある。
-    // 出力を Playwright のパイプに繋いだままだと、生き残った workerd が
-    // stdout/stderr の FD を握り続け、子プロセスの "close" イベントが発火せず、
-    // webServer の停止処理が無限に待ち続けて CI がタイムアウトまでハングする。
-    // ファイルへリダイレクトしておけば、workerd が生き残ってもファイルFDを握るだけで、
-    // Playwright 側のパイプは確実に閉じるため teardown が正常に完了する。
-    command: "npm run dev > dev-server.log 2>&1",
-    url: "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
-    // 起動待ちの上限を明示（既定の60秒では取り違えが起きうるため明示）
-    timeout: 120_000,
-    env: {
-      // telemetry のデタッチドプロセス（detached-flush）の起動を抑止する
-      NEXT_TELEMETRY_DISABLED: "1",
-    },
-  },
+  // CI ではサーバ管理を ci.yml に委ねる（webServer: undefined）。
+  // 理由: `next dev` が D1(miniflare) 用に起動する workerd が、Playwright の
+  // teardown 時のプロセス kill を生き延び、stdout/stderr の FD を握り続けて
+  // webServer の停止処理が無限ハングし、CI ジョブがタイムアウトまで止まる問題があった
+  // （出力をファイルへ逃がしても、workerd が孫プロセスとして元の FD を継承し再発）。
+  // CI では ci.yml が dev をバックグラウンド起動し wait-on で待機するため、
+  // Playwright はサーバを spawn/teardown せず、teardown ハングが原理的に起きない。
+  // ローカルでは利便性のため従来どおり Playwright が dev を起動・再利用する。
+  webServer: process.env.CI
+    ? undefined
+    : {
+        command: "npm run dev",
+        url: "http://localhost:3000",
+        reuseExistingServer: true,
+        timeout: 120_000,
+        env: {
+          NEXT_TELEMETRY_DISABLED: "1",
+        },
+      },
 });
