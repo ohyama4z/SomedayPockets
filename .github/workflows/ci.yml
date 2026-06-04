@@ -26,6 +26,9 @@ jobs:
   e2e-test:
     name: E2Eテスト
     runs-on: ubuntu-latest
+    # 万一 dev サーバや E2E がハングしても、ジョブを打ち切る安全装置。
+    # playwright install（ブラウザ+apt依存DL）に数分かかるため余裕をみて20分。
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: app
@@ -39,6 +42,14 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build
+      # ローカルD1へマイグレーションを適用してから dev を起動する
+      - run: npx wrangler d1 migrations apply someday-pockets-db --local
+      # dev サーバをバックグラウンド起動する（Playwright には起動させない）。
+      # workerd の teardown ハングを避けるため、サーバのライフサイクルは CI 側が持つ。
+      - name: devサーバをバックグラウンド起動
+        run: nohup npm run dev > dev-server.log 2>&1 &
+      # dev サーバの応答を待つ
+      - run: npx wait-on -t 60000 http://localhost:3000
       - run: npm run test:e2e
 
   lint:
