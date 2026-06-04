@@ -52,3 +52,18 @@ if echo "$COMMAND" | grep -qF '&&'; then
   }'
   exit 0
 fi
+
+# パターン5: ; によるコマンドチェーン
+# パターン4（&&）と同じく単純grepで検出する。文字列リテラル/ヒアドキュメント内の
+# ; も検出される限界があるが、「疑わしきは禁止」の哲学で一貫性を優先する。
+# ; を含む文字列を渡したい場合はコマンドを分ける／Write・--body-file等を使う。
+if echo "$COMMAND" | grep -qF ';'; then
+  jq -n '{
+    hookSpecificOutput: {
+      hookEventName: "PreToolUse",
+      permissionDecision: "deny",
+      permissionDecisionReason: "; によるコマンドチェーンは禁止です。コマンドごとにBash呼び出しを分けてください。"
+    }
+  }'
+  exit 0
+fi
