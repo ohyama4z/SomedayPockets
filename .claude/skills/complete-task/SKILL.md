@@ -5,7 +5,6 @@ allowed-tools:
   - Bash(bash .claude/scripts/complete-task.sh *)
   - Bash(git status)
   - Bash(git log *)
-  - Bash(gh issue view *)
   - Bash(gh issue comment *)
   - Read
   - Glob
@@ -15,40 +14,32 @@ allowed-tools:
 
 現在の作業ブランチのドラフトPRをReadyにしてmainにマージする。
 
-## 1. 現在の状態を確認
+## 1. 状態確認と情報収集
+未コミットの変更がないか確認する。
 ```bash
 git status
 git log --oneline main..HEAD
 ```
-未コミットの変更があれば `/save-progress` スキルの手順でコミット・pushする。
+未コミットの変更があれば `/save-progress` スキルの手順でコミット・pushしてから先へ進む。
 
-## 2. ブランチ名からIssue番号を特定
-ブランチ名が `issue/番号-xxx` の形式なので、番号を抽出する。
-
-## 3. epicラベルの確認
-Issueに `epic: <名前>` ラベルが付いているか確認する。
+ブランチ名（`issue/番号-xxx` 形式）からIssue番号を特定し、`--info` モードで完了処理に必要な情報（ブランチ・Issue状態・epicラベル）を一括取得する：
 ```bash
-gh issue view <番号> --repo ohyama4z/SomedayPockets
+bash .claude/scripts/complete-task.sh <番号> --info
 ```
-epicタスクの場合、ステップ5で完了サマリーの投稿が必要。
+出力に「epicタスクか: yes」と表示されたら、ステップ3で完了サマリーの投稿が必要。
 
-## 4. 知見の記録
-今回のタスクで得られた知見（技術的な学び、判断基準、ハマりポイントなど）があれば、ユーザーへの確認なしに `/save-knowledge` スキルの手順で記録し、コミット・pushする。なければスキップ。
+## 2. 振り返り（知見・notesの記録）
+今回のタスクを振り返り、次の **どちらかの基準に該当する内容があれば記録する**。該当しなければスキップする（迷ったら記録しない）。
 
-## 5. notes/への記録・epic完了サマリー
-今回のタスクで以下に該当する内容があれば、`notes/日付_T番号_タイトル.md` に書き出してコミット・pushする：
-- 複数の選択肢を比較検討して判断した経緯
-- 想定外のエラーや障害に遭遇し、調査・解決した過程
-- ユーザーとの議論で方針が変わった経緯
-- 今後の作業に影響しうる未解決の懸念や制約
+- **(A) 30分以上ハマった問題**: 原因と解決策。`/save-knowledge` スキルの手順で `knowledge/` に記録する
+- **(B) 次回同種タスクで参照したい情報**: 再利用できる手順・判断基準・技術的な学びは `/save-knowledge` で `knowledge/` に、判断の経緯や調査メモなどフロー情報は `notes/日付_T番号_タイトル.md` に記録する
 
-該当なしの場合のみスキップ。迷ったら書く。
+記録した場合はコミット・pushする。
 
-**epicタスクの場合は必須**: 以下の内容を含む完了サマリーをIssueコメントとして投稿する。
+## 3. epic完了サマリー（epicタスクのみ）
+epicタスクの場合のみ、以下を含む完了サマリーをIssueコメントとして投稿する。epicでなければスキップ。
 - 主要な判断経緯（何を選び、なぜ選んだか）
-- 参照したADR（`docs/decisions/` のファイル名）
-- 得られた知見へのリンク（`knowledge/` のファイル名）
-- notes/へのリンク（`notes/` のファイル名）
+- 参照したADR（`docs/decisions/` のファイル名）・知見（`knowledge/` のファイル名）・notes（`notes/` のファイル名）へのリンク
 
 ```bash
 gh issue comment <番号> --repo ohyama4z/SomedayPockets --body "$(cat <<'EOF'
@@ -57,17 +48,15 @@ EOF
 )"
 ```
 
-## 6. プロセスレビュー
-`/review-process` スキルを実行する。見つかった改善点はIssue起票のみ行い、PRマージはブロックしない。
-
-## 7. 定型処理を実行
-in-progressラベル除去・PRをReady・マージ・worktree削除・ブランチ整理を一括実行する：
+## 4. 完了処理を実行
+in-progressラベル除去・PRをReady化・CI完了の待機・mainへのマージ・Issueクローズ確認・worktree削除・ブランチ整理を一括実行する：
 ```bash
 bash .claude/scripts/complete-task.sh <番号>
 ```
-マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
+- CIが失敗するとスクリプトはマージ前に中断する（安全のため）。CIを修正してから再実行する。
+- マージによりIssueが自動クローズされる（PR本文の `Closes #番号` による）。
 
-## 8. 報告
+## 5. 報告
 - マージされたPRのURL
 - クローズされたIssue番号
-- プロセスレビューで起票した提案があればそのURL
+- 記録した知見/notesがあればそのファイル名
