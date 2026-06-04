@@ -56,3 +56,18 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - run: npm ci
       - run: npm run lint
+
+  # 秘密情報（APIキー・トークン等）の誤コミットをブロックするシークレットスキャン。
+  # 検知時はjobがfailし、push/PRをblockする（パブリックリポ×auto modeの第一防壁）。
+  secret-scan:
+    name: シークレットスキャン
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # フル履歴をスキャンするため全コミットを取得する
+          fetch-depth: 0
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
