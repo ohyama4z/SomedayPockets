@@ -15,5 +15,5 @@
 | 2026-03-19_T17_1_D1データベース作成とAPIトークン権限.md | D1作成コマンドとAPIトークンに必要な権限（D1 Edit） |
 | 2026-03-19_T17_2_DrizzleORMとwranglerのマイグレーション連携.md | Drizzle設定・migrations_dirの不一致・マイグレーション適用手順 |
 | 2026-03-19_T17_3_NextjsAppRouterからD1への接続.md | getCloudflareContext経由のD1接続とenv.d.ts型定義 |
-| 2026-04-17_T96_1_PreToolUseフックでコマンドガードレール.md | PreToolUseフックで禁止コマンドパターンを検出・ブロックする方法 |
+| 2026-04-17_T96_1_PreToolUseフックでコマンドガードレール.md | PreToolUseフックで禁止コマンドパターンを検出・ブロックする方法（`&&`/`;` チェーンは単純grep。#101追記） |
 | 2026-06-04_T95_1_complete-taskのステップ統合.md | 定型スキルは判断ステップと機械処理を分離。情報収集はスクリプトの--infoに集約、記録要否は二択基準に、CI待機を明示追加 |

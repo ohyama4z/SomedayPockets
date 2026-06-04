@@ -18,6 +18,16 @@ else
   echo "$IN_PROGRESS"
 fi
 
+# オープンなIssue一覧
+echo ""
+echo "--- オープンなIssue ---"
+OPEN_ISSUES=$(gh issue list --repo "$REPO" --state open --json number,title --jq '.[] | "#\(.number) \(.title)"' 2>/dev/null || echo "(取得失敗)")
+if [ -z "$OPEN_ISSUES" ]; then
+  echo "なし"
+else
+  echo "$OPEN_ISSUES"
+fi
+
 # gitブランチ状態
 echo ""
 echo "--- ブランチ ---"
